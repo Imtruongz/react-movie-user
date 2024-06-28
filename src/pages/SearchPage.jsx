@@ -4,11 +4,7 @@ import { useEffect, useState } from 'react';
 import MediaItem from '../components/MediaItem';
 import { getAllMovies, searchMovieApi } from '../services/movieService';
 
-const mediaTypes = ['Tìm kiếm phim', 'Tìm kiếm diễn viên', 'Tìm kiếm đạo diễn'];
-
 const SearchPage = () => {
-	const [mediaType, setMediaType] = useState(mediaTypes[0]);
-	const [medias, setMedias] = useState([]);
 	const [valueSearch, setValueSearch] = useState('');
 	const [movies, setMovies] = useState([]);
 
@@ -30,13 +26,13 @@ const SearchPage = () => {
 
 	const fecthMovie = async () => {
 		const res = await getAllMovies('ALL');
-		setMovies(res.movies)
+		setMovies(res.movies);
 	};
 
 	const debouncedHandleSearch = debounce(handleSearch, 300);
 
 	useEffect(() => {
-		fecthMovie()
+		fecthMovie();
 	}, []);
 
 	return (
@@ -49,24 +45,6 @@ const SearchPage = () => {
 					padding: '100px',
 				}}>
 				<Stack spacing={3}>
-					<Stack
-						spacing={5}
-						direction="row"
-						justifyContent="center"
-						sx={{ width: '100%', color: 'white' }}>
-						{mediaTypes.map((item, index) => (
-							<Button
-								size="large"
-								key={index}
-								sx={{
-									color: 'white',
-								}}
-								// onClick={() => onCategoryChange(item)}
-							>
-								{item}
-							</Button>
-						))}
-					</Stack>
 					<TextField
 						value={valueSearch}
 						onChange={(e) => handleChangeInputSearch(e.target.value)}

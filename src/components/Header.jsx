@@ -153,10 +153,8 @@ const Header = () => {
                   open={open}
                   onClose={handleMenuClose}
                   MenuListProps={{ onMouseLeave: handleMenuClose }}
-                  sx={{ zIndex: "9999" }}
+                  sx={{ zIndex: "9999"}}
                 >
-                  {/* <ListItemButton onClick={handleFavorite}>Favorite</ListItemButton>
-                  <ListItemButton onClick={handleLogout}>Log out</ListItemButton> */}
                   {menuConfigs.user.map((item, index) => (
                     <ListItemButton
                       component={Link}
